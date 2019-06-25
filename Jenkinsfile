@@ -14,5 +14,8 @@ node(){
     //shortCommit = sh(returnStdout: true, script: "git log -n 1 --pretty=format:'%h'").trim()
     //echo shortCommit
     //echo CICDConstants.GH_STATUS_FAILURE
+   def scmVars = checkout scm
+    def commitHash = scmVars.GIT_COMMIT
+    println commitHash
 
 }
