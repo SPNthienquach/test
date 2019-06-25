@@ -10,10 +10,9 @@ node(){
     echo "PULL_REQUEST2"
     echo PULL_REQUEST
     echo "CHANGE_ID"
-    echo CHANGE_ID
+    echo env.CHANGE_ID
     echo CICDConstants.POST_PROCESSING_VALIDATION
     echo "${env.BUILD_URL}"
     echo CICDConstants.GH_STATUS_FAILURE
-    cicdUtils.sendStatusToPullRequest(CICDConstants.POST_PROCESSING_VALIDATION,CICDConstants.GH_STATUS_FAILURE,
-                "Post processing has failed. More details in build logs", "${env.BUILD_URL}")
+
 }
