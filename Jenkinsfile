@@ -12,4 +12,6 @@ node(){
     echo CICDConstants.POST_PROCESSING_VALIDATION
     echo "${env.BUILD_URL}"
     echo CICDConstants.GH_STATUS_FAILURE
+    cicdUtils.sendStatusToPullRequest(CICDConstants.POST_PROCESSING_VALIDATION,CICDConstants.GH_STATUS_FAILURE,
+                "Post processing has failed. More details in build logs", "${env.BUILD_URL}")
 }
