@@ -8,12 +8,8 @@ node(){
     SymphonyCICDUtils cicdUtils = new SymphonyCICDUtils()
     echo "current build number: ${currentBuild.number}"
     echo "previous build number: ${currentBuild.previousBuild.getNumber()}"
-    def PULL_REQUEST = env.CHANGE_ID
-    echo "PULL_REQUEST"
-    echo "${PULL_REQUEST}"
-    echo "${env.CHANGE_ID}"
-    echo "CHANGE_ID"
-    echo env.CHANGE_ID
+    def payload = new GitHubUtils().sendCommentOnPR("xxxxxxxxxxxxxxxxxxxxxxx", currentBuild.number)
+    echo payload
     echo CICDConstants.POST_PROCESSING_VALIDATION
     echo "${env.BUILD_URL}"
     echo CICDConstants.GH_STATUS_FAILURE
