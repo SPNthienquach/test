@@ -8,7 +8,8 @@ node(){
     SymphonyCICDUtils cicdUtils = new SymphonyCICDUtils()
     def PULL_REQUEST = env.CHANGE_ID
     echo "PULL_REQUEST2"
-    echo PULL_REQUEST
+    echo "${PULL_REQUEST}"
+    echo "${env.CHANGE_ID}"
     echo "CHANGE_ID"
     echo env.CHANGE_ID
     echo CICDConstants.POST_PROCESSING_VALIDATION
