@@ -8,7 +8,7 @@ node(){
     SymphonyCICDUtils cicdUtils = new SymphonyCICDUtils()
     echo "current build number: ${currentBuild.number}"
     echo "previous build number: ${currentBuild.previousBuild.getNumber()}"
-     echo "current build number: ${currentBuild.sha}"
+    githubNotify context: 'Notification key', description: 'This is a shorted example',  status: 'SUCCESS'
     echo CICDConstants.POST_PROCESSING_VALIDATION
     echo "${env.BUILD_URL}"
     echo CICDConstants.GH_STATUS_FAILURE
