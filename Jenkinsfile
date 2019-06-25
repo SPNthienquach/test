@@ -6,6 +6,8 @@ import groovy.json.JsonSlurperClassic
 
 node(){
     SymphonyCICDUtils cicdUtils = new SymphonyCICDUtils()
+    echo "current build number: ${currentBuild.number}"
+    echo "previous build number: ${currentBuild.previousBuild.getNumber()}
     def PULL_REQUEST = env.CHANGE_ID
     echo "PULL_REQUEST"
     echo "${PULL_REQUEST}"
