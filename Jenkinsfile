@@ -17,5 +17,6 @@ node(){
    def scmVars = checkout scm
     def commitHash = scmVars.GIT_COMMIT
     println commitHash
+    println scmVars.CHANGE_ID
 
 }
