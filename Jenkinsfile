@@ -31,7 +31,7 @@ def sendCommentOnPR(comment, prNumber) {
     def gitHubToken = util.getSecretTextCredential('symphonyjenkinsauto-token')
     def map = ["body": "${comment}"]
     def payload = JsonOutput.toJson(map)
-    def url = new URL("https://api.github.com/repos/SymphonyOSF/${repoInfo.repo}/issues/${prNumber}/comments?access_token=${gitHubToken}")
+    def url = new URL("https://api.github.com/repos/SPNthienquach/${repoInfo.repo}/issues/${prNumber}/comments?access_token=${gitHubToken}")
     def connection = url.openConnection()
 
     connection.setRequestMethod("POST")
