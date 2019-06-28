@@ -24,36 +24,7 @@ import org.kohsuke.github.GitHub
 
 import java.util.regex.Matcher
 import java.io.File
-def sendCommentOnPR(comment, prNumber) {
-    echo "Sending comment on PR"
-    SymphonyCICDUtils util = new SymphonyCICDUtils()
-    LinkedHashMap repoInfo = util.repoInformation()
-    def gitHubToken = util.getSecretTextCredential('symphonyjenkinsauto-token')
-    def map = ["body": "${comment}"]
-    def payload = JsonOutput.toJson(map)
-    def url = new URL("https://api.github.com/repos/SPNthienquach/${repoInfo.repo}/issues/${prNumber}/comments?access_token=${gitHubToken}")
-    def connection = url.openConnection()
 
-    connection.setRequestMethod("POST")
-    connection.setRequestProperty("Content-Type", "application/json")
-    connection.doOutput = true
-
-    def writer = new OutputStreamWriter(connection.outputStream)
-    writer.write(payload)
-    writer.flush()
-    writer.close()
-    connection.connect()
-
-    def postRC = connection.getResponseCode()
-    def postRM = connection.getResponseMessage()
-    def commentPayload = new JsonSlurperClassic().parseText("${connection.getContent()}")
-
-    echo "Send comment response: ${postRC}"
-    echo "Send comment response message: ${postRM}"
-    echo "Comment ID: ${commentPayload.id}"
-
-    return commentPayload
-}
 
 node(){  
 	def scmVars = checkout scm	
@@ -70,10 +41,6 @@ withEnv(["GIT_REPO=test",
 
             // Send final report as PR comment
 	    GitHubUtils gitHubUtils = new GitHubUtils()
-            def commentPayload = sendCommentOnPR(
-                    "test-pr",
-                    "${currentBuild.number.toInteger()}"
-            )
 
             // Set GitHub pull request status
 	  	SymphonyCICDUtils cicdUtils = new SymphonyCICDUtils()
@@ -81,7 +48,7 @@ withEnv(["GIT_REPO=test",
                     "${CICDConstants.NEMESIS_STATUS}",
                     "${finalStatus}",
                     "This is not good",
-                    "${commentPayload.html_url}"
+                    "https://system-lab.dev.symphony.com/jenkins/view/War-Dashboard/job/testPR/view/change-requests/job/PR-10/18/console"
             )
 
             cleanWs()
