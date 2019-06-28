@@ -11,12 +11,6 @@ withEnv(["GIT_REPO=test",
 	// "CHANGE_ID=50",
 	 "JOB_NAME=https://github.com/SPNthienquach/test/${env.CHANGE_BRANCH}"
 	 ]){
-    try {
-        /*echo "current build number: ${currentBuild.number}"
-        echo "previous build number: ${currentBuild.previousBuild.getNumber()}"
-        echo "${env.BUILD_URL}"*/
-
-	    
 	   echo "============" + env.JOB_NAME
      
       stage("Clean work-space") {
@@ -43,5 +37,5 @@ withEnv(["GIT_REPO=test",
             cleanWs()
         }
     }     
-}
+
 }
