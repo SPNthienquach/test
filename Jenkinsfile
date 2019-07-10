@@ -27,7 +27,9 @@ import java.io.File
 
 
 node(){  
-	def scmVars = checkout scm	
+	def a = automerge()
+	print a
+/*	def scmVars = checkout scm	
 withEnv(["GIT_REPO=test",
 	// "CHANGE_ID=50",
 	 "JOB_NAME=https://github.com/SPNthienquach/test/${env.CHANGE_BRANCH}"
@@ -54,5 +56,5 @@ withEnv(["GIT_REPO=test",
             cleanWs()
         }
     }     
-
+*/
 }
