@@ -27,10 +27,13 @@ import java.io.File
 
 
 node(){  
-	def a = automerge("8cb0ac424d8477cc5f2aeb51d7112e17fc908437", false)
-	print a
-	print "======================"
-	echo sh(returnStdout: true, script: 'env')
+	//def a = automerge("8cb0ac424d8477cc5f2aeb51d7112e17fc908437", false)
+	//print a
+//	print "======================"
+	sh 'env > env.txt' 
+for (String i : readFile('env.txt').split("\r?\n")) {
+    println i
+}
 /*	def scmVars = checkout scm	
 withEnv(["GIT_REPO=test",
 	// "CHANGE_ID=50",
