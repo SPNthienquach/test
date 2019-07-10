@@ -27,8 +27,9 @@ import java.io.File
 
 
 node(){  
-	def a = automerge()
-	print a
+	//def a = automerge()
+	//print a
+	print env.ghprbActualCommit
 /*	def scmVars = checkout scm	
 withEnv(["GIT_REPO=test",
 	// "CHANGE_ID=50",
