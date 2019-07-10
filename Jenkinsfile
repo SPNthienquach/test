@@ -10,7 +10,7 @@ node(){
     echo "PULL_REQUESTe"
     echo "${PULL_REQUEST}"
     echo "${env.CHANGE_ID}"
-    echo "CHANGE_ID"
+    echo "CHANGE_ID "
     echo env.CHANGE_ID
     echo CICDConstants.POST_PROCESSING_VALIDATION
     echo "${env.BUILD_URL}"
