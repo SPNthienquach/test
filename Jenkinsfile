@@ -15,7 +15,8 @@ node(){
     echo CICDConstants.POST_PROCESSING_VALIDATION
     echo "${env.BUILD_URL}"
     echo CICDConstants.GH_STATUS_FAILURE
-    def a = automerge()
-    print a
+   // def a = automerge()
+    prHeadHash = cicdUtils.getHeadShaForPR("SPNthienquach","test",env.CHANGE_ID)
+    print prHeadHash
 
 }
