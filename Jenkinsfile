@@ -15,7 +15,7 @@ import com.symphony.cicd.SatRobotDescriptor
 import org.kohsuke.github.GHCommit
 import org.kohsuke.github.GHRepository
 import org.kohsuke.github.GitHub
-
+import com.symphony.cicd.util.GitHubUtils
 import java.util.regex.Matcher
 
 /**
