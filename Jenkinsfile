@@ -1,12 +1,24 @@
 @Library('sym-pipeline') _
-import com.symphony.cicd.CICDConstants
-import com.symphony.cicd.SymphonyCICDUtils
-import com.symphony.cicd.util.GitHubUtils
+package com.symphony.cicd.util
+
+import com.cloudbees.groovy.cps.NonCPS
+import com.symphony.cicd.util.review.Review
+import com.symphony.cicd.util.review.ReviewStatusEnum
 import groovy.json.JsonSlurperClassic
+import groovy.json.JsonSlurper
 import com.symphony.cicd.CICDConstants
 import com.symphony.cicd.SymphonyCICDUtils
-import com.symphony.cicd.util.GitHubClient
-import com.symphony.cicd.util.GitHubUtils
+import com.symphony.cicd.GitRepository
+import com.symphony.cicd.ProjectEnum
+import groovy.json.*
+import com.symphony.cicd.util.exceptions.FileNotFoundException
+import com.symphony.cicd.Utils
+import com.symphony.cicd.SatRobotDescriptor
+import org.kohsuke.github.GHCommit
+import org.kohsuke.github.GHRepository
+import org.kohsuke.github.GitHub
+
+import java.util.regex.Matcher
 
 /**
  * Conditions to automerge (all must be true):
