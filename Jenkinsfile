@@ -1,6 +1,4 @@
 @Library('sym-pipeline') _
-package com.symphony.cicd.util
-
 import com.cloudbees.groovy.cps.NonCPS
 import com.symphony.cicd.util.review.Review
 import com.symphony.cicd.util.review.ReviewStatusEnum
