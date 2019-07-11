@@ -8,7 +8,7 @@ node(){
     SymphonyCICDUtils cicdUtils = new SymphonyCICDUtils()
    
    // def a = automerge()
-    prHeadHash = cicdUtils.getHeadShaForPR("SPNthienquach","test","${env.CHANGE_ID}")
-    print prHeadHash
+    String prHeadHash = cicdUtils.getHeadShaForPR("SPNthienquach","test","${env.CHANGE_ID}")
+    automerge(prHeadHash)
 
 }
